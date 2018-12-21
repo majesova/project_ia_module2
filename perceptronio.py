@@ -10,18 +10,22 @@ import math
 # Crear una o varias variables para los pesos de las entradas dependiendo del número de entradas.
 # Deben tener valores iniciales aleatorios entre 0 y 1.
 inputs = np.array([[0,1], [0,0], [1,1], [1,0], [0,1] ,[1,1]]) #array para probar ejercicio 1
-#E1
 class Perceptronio:
     def __init__(self):
         self.pesos = [] #inicializamos los pesos
     def gen_pesos(self):
-        self.pesos = np.zeros(1 + inputs.shape[1])# se rellena la matrix con ceros
-        return self.pesos
+        self.pesos = np.random.choice([0., 1.], size=((1 + inputs.shape[1]),), p=[.5, .5]) #Se generan pesos entre 0 y 1 random
     def predict(self, inputs):
         z = np.dot(inputs, self.pesos[1:]) + self.pesos[0] # función dot para obtener la suma de xi.wi
-        #print(z), se comenta por que sale un cuadro enorme de texto con los valores ya aplicado en entrenamiento
-        f = np.where(z >= 0.0, 1, 0)#0 si z >= 0 regresa 1, en caso contrario 0
-        return f
+        #print(z), se comenta por que sale un cuadro enorme de texto con los valores ya aplicando en entrenamiento
+        phi = np.where(z >= 0.0, 1, 0)# se seleccionan de
+        return phi
+
+perceptronio = Perceptronio() #Se crea instancia
+perceptronio.gen_pesos() #generar datos muestra
+#prueba de funcionamiento
+phi = perceptronio.predict(inputs) # demo de ejecución
+print (phi)
 
 perceptronio = Perceptronio()
 perceptronio.gen_pesos()
